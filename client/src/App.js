@@ -4,6 +4,7 @@ import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import UpdateMovie from './Movies/UpdateMovie'
+import {MovieContext} from './utils/MovieContext'
 import axios from 'axios';
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
 
   return (
     <>
+    <MovieContext.Provider value={{movieList,getMovieList}} > 
       <SavedList list={savedList} />
 
       <Route exact path="/">
@@ -40,6 +42,7 @@ const App = () => {
       <Route path="/update-movie/:id">
         <UpdateMovie  />
       </Route>
+      </MovieContext.Provider>
     </>
   );
 };
